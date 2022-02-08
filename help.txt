@@ -1,0 +1,21 @@
+overlay example https://stackoverflow.com/questions/46362548/image-hover-color-overlay
+
+
+To add a hover effect, that means the img first needs to be wrapped in an anchor tag. Make that display block and position relative.
+Then add :before and :after pseudo elements to the anchor tag. Display block, empty content, size them to be 100% wide and high, opacity 0 my default. Give them a transition property too
+One of these should have the teal background color, the other can have the eye icon as a background image.
+On hover of the link, change the opacity of the teal pseudo to about 0.7 and the eye pseudo to 1
+You may need to use zindex on these to make them stack correctly
+
+No it is an image element, but it needs wrapping in an anchor tag. Then the steps above as I said
+
+I would use pseudo elements for this
+wrap ethereum img in an anchor tag - set anchor to display block and position relative
+Set img to display block too
+Pseudo on the anchor tag (:before or :after or both)
+Have the pseudo be 100% width and height and teal background color, opacity 0, position absolute
+The eye icon can be a background img on the same pseudo, but means you would have to change the hsl teal color to hsla so it’s opaque. If you don’t want to change the hsl color to hsla, place the eye icon on a different pseudo (then they can have opacity set independently on hover)
+On hover of the anchor tag, set opacity on the pseudo to 1 (or 0.7ish if teal color is in its own pseudo and hsl, and 1 for the pseudo containing eye img)
+You may want to add a transition opacity to them
+You may need to use z-index to later the pseudos on top of each other (one with eye icon in would need to sit on top)
+Make sure the anchor tag has a label either by including Sr-only text or aria label, or you can use alt text on the image
